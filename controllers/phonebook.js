@@ -35,6 +35,16 @@ exports.phonebook_getAll = async(req,res) => {
     }
   }
 
+  exports.phonebook_delete = async(req,res)=> {
+    try{
+        const phonebook = await Phonebook.findById(req.params.id) 
+        const phonebookres = await phonebook.remove()
+        res.json(phonebookres)   
+    }catch(err){
+        res.send('Error')
+    }
+  
+  }
 
   exports.phonebook_update = async(req,res)=> {
     try{

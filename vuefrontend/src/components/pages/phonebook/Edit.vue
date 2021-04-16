@@ -19,7 +19,7 @@
             <form>
               <div class="form-group">
                 <label for="firstname">First Name</label>
-                <input
+                 <input
                   type="text"
                   name="firstname"
                   v-model="contact.first_name"

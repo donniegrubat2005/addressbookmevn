@@ -11,4 +11,6 @@ router.get('/:id/edit', PhonebookController.phonebook_edit)
 
 router.patch('/:id', PhonebookController.phonebook_update)
 
+router.delete('/:id', PhonebookController.phonebook_delete)
+
 module.exports = router;

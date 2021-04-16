@@ -42,7 +42,7 @@
                           :to="{
                                                         name: 'editcontact',
                                                         params: {
-                                                            id: contact.id
+                                                            id: contact._id
                                                         }
                                                     }"
                         >
@@ -65,8 +65,14 @@
                         >
                           <i
                             class="far fa-trash-alt ms-text-danger"
-                           
+                            @click="
+                                                            remove(
+                                                                item,
+                                                                contact._id
+                                                            )
+                                                        "
                           ></i>
+                          
                         </button>
                       </span>
                     </td>
@@ -101,6 +107,20 @@ export default {
        })
         
         .catch(error => (this.error = error.response.data.error));
+    },
+
+     remove(key, id) {
+      this.$axios
+        .delete(`/phonebooks/${id}`)
+        .then(
+          // eslint-disable-next-line
+          (response) => this.contacts.splice(key, 1),
+          this.$toastr.success("Deleted Successfully!", "Deleted!")
+        )
+        .catch((error) => {
+          this.error = error.response.data.error;
+          this.$toastr.warning(this.error, "Error!");
+        });
     },
    },
    mounted() {

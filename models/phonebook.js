@@ -11,11 +11,11 @@ const phonebookSchema = new Schema({
   timestamps: true,
 });
 
-phonebookSchema.method("toJSON", function() {
-  const { __v, _id, ...object } = this.toObject();
-  object.id = _id;
-  return object;
-});
+// phonebookSchema.method("toJSON", function() {
+//   const { __v, _id, ...object } = this.toObject();
+//   object.id = _id;
+//   return object;
+// });
 
 const Phonebook = mongoose.model('Phonebook', phonebookSchema);
 
