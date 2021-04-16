@@ -1,29 +1,14 @@
 const express = require('express')
 const router = express.Router()
-let Phonebook = require('../models/phonebook');
 
-router.get('/', async(req,res) => {
-  try{
-         const phonebooks = await Phonebook.find()
-         res.json(phonebooks)
-  }catch(err){
-      res.send('Error ' + err)
-  }
-})
+const PhonebookController = require('../controllers/phonebook')
 
-router.post('/', async(req,res) => {
-  const phonebook = new Phonebook({
-      first_name: req.body.first_name,
-      last_name: req.body.last_name,
-      address: req.body.address
-  })
+router.get('/', PhonebookController.phonebook_getAll)
 
-  try{
-      const phonebookData =  await phonebook.save() 
-      res.json(phonebookData)
-  }catch(err){
-      res.send('Error')
-  }
-})
+router.post('/', PhonebookController.phonebook_create)
+
+router.get('/:id/edit', PhonebookController.phonebook_edit)
+
+router.patch('/:id', PhonebookController.phonebook_update)
 
 module.exports = router;

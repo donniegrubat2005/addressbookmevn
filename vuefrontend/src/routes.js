@@ -7,7 +7,7 @@ const router = new VueRouter({
     mode: "history",
     routes: [
         {
-            path: "/dashboard",
+            path: "/",
             name: "dashboard",
             meta: {
                 title: "Dashboard",
@@ -34,6 +34,15 @@ const router = new VueRouter({
             },
             component: () => import("./components/pages/phonebook/Create.vue")
         },
+
+        {
+            path: ":id/edit",
+            name: "editcontact",
+            component: () => import("./components/pages/phonebook/Edit.vue"),
+            meta: {
+                title: "Edit Contact"
+            }
+        }
       
     ],
     linkActiveClass: "active",

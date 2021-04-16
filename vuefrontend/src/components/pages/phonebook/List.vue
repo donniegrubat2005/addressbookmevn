@@ -97,7 +97,7 @@ export default {
         .get("/phonebooks")
         .then(response => {
           this.contacts = response.data;
-         //$('#contactdatatable').DataTable();
+         
        })
         
         .catch(error => (this.error = error.response.data.error));
